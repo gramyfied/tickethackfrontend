@@ -1,15 +1,48 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
     <title>Tickethack</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="script.js">
-</head>
-<h2>Tickethack</h2>
-
-<body>
-    <div class="headers right">panier</div>
-</body>
+  </head>
+  <body>
+    <div id="nav">
+      <a id="go-to-index" href="index.html">
+        <h1 id="logo">Tickethack</h1>
+      </a>
+      <div id="cart-booking">
+        <a id="go-to-carts" href="carts.html">Cart</a>
+        <a id="go-to-bookings" href="bookings.html">Booking</a>
+      </div>
+    </div>
+    <div id="main-container">
+      <h2>Explore the world effortlessly by train!</h2>
+      <h3>
+        Compare, book and enjoy cheap prices for train tickets: your journey
+        starts on Tickethack.
+      </h3>
+      <div id="content-container">
+        <div id="search-container">
+          <input
+            id="search-departure"
+            name="search-departure"
+            type="text"
+            placeholder="Departure"
+          />
+          <input
+            id="search-arrival"
+            name="search-arrival"
+            type="text"
+            placeholder="Arrival"
+          />
+          <input id="search-date" name="search-date" type="date" />
+          <input id="search-button" type="button" value="Search" />
+        </div>
+        <div id="results-container"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

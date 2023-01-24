@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-// var Booking = require("../models/bookings");
+var Booking = require("../models/bookings");
 let bookings = [
   {
     departure: "Lyon",
@@ -71,21 +71,25 @@ let bookings = [
 ];
 
 router.get("/", (req, res) => {
-  if (bookings != []) {
-    res.json({ result: true, bookings: bookings });
-  } else {
-    res.json({ result: false, error: "No booking found" });
-  }
+  Booking.find().then((bookings) => {
+    if (bookings.length != 0) {
+      res.json({ result: true, bookings: bookings });
+    } else {
+      res.json({ result: false, error: "No booking found" });
+    }
+  });
 });
 
 router.post("/", (req, res) => {
-  let newBooking = {
+  let newBooking = new Booking({
     departure: req.body.departure,
-    arrival: req.body.departure,
-    date: { $date: req.body.date },
+    arrival: req.body.arrival,
+    date: new Date(req.body.date),
     price: req.body.price,
-  };
-  res.json({ result: true, newBooking: newBooking });
+  });
+  newBooking.save().then(() => {
+    res.json({ result: true, newBooking: newBooking });
+  });
 });
 
 module.exports = router;

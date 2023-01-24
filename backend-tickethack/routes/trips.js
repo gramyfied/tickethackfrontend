@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-// var Trip = require('../models/trips');
+var Trip = require("../models/trips");
 let trips = [
   {
     departure: "Lyon",
@@ -71,27 +71,31 @@ let trips = [
 ];
 
 router.get("/", (req, res) => {
-  if (trips != []) {
-    res.json({ result: true, trips: trips });
-  } else {
-    res.json({ result: false, error: "No trip found" });
-  }
+  Trip.find().then((trips) => {
+    if (trips.length != 0) {
+      res.json({ result: true, trips: trips });
+    } else {
+      res.json({ result: false, error: "No trip found" });
+    }
+  });
 });
 
 router.get("/:departure/:arrival/:date", (req, res) => {
   let searchedDate = new Date(req.params.date);
-  let returnTrips = trips.filter(
-    (trip) =>
-      new Date(trip.date.$date).toDateString() ===
-        searchedDate.toDateString() &&
-      trip.arrival === req.params.arrival &&
-      trip.departure === req.params.departure
-  );
-  if (returnTrips != []) {
-    res.json({ result: true, trips: returnTrips });
-  } else {
-    res.json({ result: false, error: "No trip found" });
-  }
+  console.log(searchedDate.toDateString());
+  Trip.find().then((trips) => {
+    let returnTrips = trips.filter(
+      (trip) =>
+        trip.date.toDateString() === searchedDate.toDateString() &&
+        trip.arrival.toLowerCase() === req.params.arrival.toLowerCase() &&
+        trip.departure.toLowerCase() === req.params.departure.toLowerCase()
+    );
+    if (returnTrips != []) {
+      res.json({ result: true, trips: returnTrips });
+    } else {
+      res.json({ result: false, error: "No trip found" });
+    }
+  });
 });
 
 module.exports = router;

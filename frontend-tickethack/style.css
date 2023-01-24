@@ -1,0 +1,66 @@
+body {
+  background: url("../backend-tickethack/images/background.jpg") no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+}
+
+#nav {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin: 0;
+}
+
+#logo {
+  color: rgb(32, 178, 110);
+  font-weight: bolder;
+  margin-left: 50px;
+}
+
+#cart-booking {
+}
+
+#go-to-carts,
+#go-to-bookings {
+  margin-right: 50px;
+}
+
+#main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#content-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#search-container,
+#results-container {
+  background-color: white;
+  border-radius: 10px;
+  width: 25%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}

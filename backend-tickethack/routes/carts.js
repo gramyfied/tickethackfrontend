@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-// var Cart = require("../models/carts");
+var Cart = require("../models/carts");
 let carts = [
   {
     departure: "Lyon",
@@ -71,26 +71,42 @@ let carts = [
 ];
 
 router.get("/", (req, res) => {
-  if (carts != []) {
-    res.json({ result: true, carts: carts });
-  } else {
-    res.json({ result: false, error: "No cart found" });
-  }
+  Cart.find().then((carts) => {
+    console.log(carts);
+    if (carts.length != 0) {
+      res.json({ result: true, carts: carts });
+    } else {
+      res.json({ result: false, error: "No cart found" });
+    }
+  });
 });
 
 // Pour le fetch dans le frontend, bien penser à rajouter les headers nécessaires pour envoyer le body en JSON
 router.post("/", (req, res) => {
-  let newCart = {
+  let newCart = new Cart({
     departure: req.body.departure,
-    arrival: req.body.departure,
-    date: { $date: req.body.date },
+    arrival: req.body.arrival,
+    date: new Date(req.body.date),
     price: req.body.price,
-  };
-  res.json({ result: true, newCart: newCart });
+  });
+  newCart.save().then(() => {
+    res.json({ result: true, newCart: newCart });
+  });
 });
 
-router.delete("/:departure/:arrival/:date", (req, res) => {
-  // Supprimer avec deleteOne() de Mongoose
+router.delete("/:departure/:arrival/:date/:price", (req, res) => {
+  Cart.deleteOne({
+    departure: req.params.departure,
+    arrival: req.params.departure,
+    date: new Date(req.params.date),
+    price: req.params.price,
+  }).then((data) => {
+    if (data != []) {
+      res.json({ result: true, removedCart: data });
+    } else {
+      res.json({ result: false, error: "Deletion canceled" });
+    }
+  });
 });
 
 module.exports = router;
