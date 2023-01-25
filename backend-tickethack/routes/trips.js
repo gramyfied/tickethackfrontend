@@ -90,7 +90,7 @@ router.get("/:departure/:arrival/:date", (req, res) => {
         trip.arrival.toLowerCase() === req.params.arrival.toLowerCase() &&
         trip.departure.toLowerCase() === req.params.departure.toLowerCase()
     );
-    if (returnTrips != []) {
+    if (returnTrips.length != 0) {
       res.json({ result: true, trips: returnTrips });
     } else {
       res.json({ result: false, error: "No trip found" });

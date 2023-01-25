@@ -1,16 +1,17 @@
 body {
-  background: url("../backend-tickethack/images/background.jpg") no-repeat
-    center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   margin: 0px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: large;
+  font-weight: 800;
 }
 
 #nav {
@@ -39,6 +40,11 @@ body {
 }
 
 #main-container {
+  background: url("./images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   width: 100%;
   height: 100%;
   display: flex;
@@ -51,16 +57,159 @@ body {
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+h2,
+h3 {
+  color: white;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: xx-large;
 }
 
 #search-container,
 #results-container {
   background-color: white;
   border-radius: 10px;
-  width: 25%;
+  width: 20%;
   height: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 100px;
+  padding: 30px;
+}
+
+#search-departure,
+#search-arrival {
+  height: 40px;
+  font-size: larger;
+  background-color: rgb(230, 246, 239);
+  margin-top: 20px;
+  border: 1px solid black;
+  padding-left: 10px;
+  width: 100%;
+}
+
+#search-date {
+  height: 40px;
+  font-size: larger;
+  background-color: rgb(230, 246, 239);
+  margin-top: 150px;
+  margin-bottom: 70px;
+  border: 1px solid black;
+  padding-left: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+#search-button {
+  background-color: seagreen;
+  color: white;
+  border-radius: 10px;
+  border: 0ch;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  font-size: larger;
+  width: 100%;
+}
+
+#search-button:hover {
+  background-color: rgb(109, 190, 144);
+  color: white;
+  border-radius: 10px;
+  border: 0ch;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  font-size: larger;
+  width: 100%;
+}
+
+#search-button:active {
+  background-color: seagreen;
+  color: white;
+  border-radius: 10px;
+  border: 5px solid green;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  font-size: larger;
+  width: 100%;
+}
+
+#results-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+p {
+  color: rgb(32, 178, 110);
+  font-size: x-large;
+  font-weight: 900;
+  margin-top: 70px;
+  text-align: center;
+}
+
+#img-train,
+#img-not-found {
+  position: relative;
+  margin-top: 100px;
+}
+
+.trip {
+  display: flex;
+  flex-direction: row;
+  background-color: palegoldenrod;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 5px;
+  height: 100px;
+  min-height: 100px;
+  width: 100%;
+  position: sticky;
+}
+
+.date {
+  display: none;
+}
+
+.book-button {
+  background-color: seagreen;
+  color: white;
+  border-radius: 10px;
+  border: 0ch;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.book-button:hover {
+  background-color: rgb(109, 190, 144);
+  color: white;
+  border-radius: 10px;
+  border: 0ch;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.book-button:active {
+  background-color: seagreen;
+  color: white;
+  border-radius: 10px;
+  border: 5px solid green;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
