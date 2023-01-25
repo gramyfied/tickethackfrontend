@@ -49,16 +49,7 @@ a {
   justify-content: center;
 }
 
-p {
-  font-size: x-large;
-  font-weight: 500;
-}
-
-h3 {
-  margin: 0;
-}
-
-#mycart {
+#mybooking {
   background-color: white;
   width: 60%;
   height: fit-content;
@@ -73,7 +64,7 @@ h3 {
   border-radius: 40px;
 }
 
-.cart {
+.booking {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -89,72 +80,11 @@ h3 {
   font-weight: 500;
 }
 
-.date {
-  display: none;
+h2 {
+  color: rgb(32, 178, 110);
 }
 
-#total-carts {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #000933;
-  height: 70px;
-  width: 100%;
-}
-
-#total-price {
-  color: white;
-  font-size: large;
-  font-weight: 600;
-  margin-left: 50px;
-}
-
-.delete-button,
-#purchase-button {
-  background-color: seagreen;
-  border: 0;
-  color: white;
-  border-radius: 10px;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: larger;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.delete-button:hover,
-#purchase-button:hover {
-  background-color: rgb(109, 190, 144);
-  color: white;
-  border-radius: 10px;
-  border: 0ch;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: larger;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.delete-button:active,
-#purchase-button:active {
-  background-color: rgb(33, 96, 60);
-  color: white;
-  border-radius: 10px;
-  border: 0ch;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: larger;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#purchase-button {
-  margin-right: 50px;
+p {
+  font-size: x-large;
+  font-weight: 500;
 }

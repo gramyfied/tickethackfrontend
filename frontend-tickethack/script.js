@@ -27,6 +27,7 @@ function populateTripsResults(data) {
   } else {
     document.querySelector("#results-container").innerHTML += `
             <img id="img-not-found" src="./images/notfound.png"/>
+            <p>___________________________</p>
             <p>No trip found.</p>
         `;
   }
@@ -62,16 +63,29 @@ function resfreshListenersBookButtons() {
 }
 
 document.querySelector("#search-button").addEventListener("click", (event) => {
+  console.log("click");
   let searchedDeparture = document.querySelector("#search-departure").value;
   let searchedArrival = document.querySelector("#search-arrival").value;
   let searchedDate = document.querySelector("#search-date").value;
-  document.querySelector("#results-container").innerHTML = "<p>Loading...</p>";
-  fetch(
-    `http://localhost:3000/trips/${searchedDeparture}/${searchedArrival}/${searchedDate}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      populateTripsResults(data);
-      resfreshListenersBookButtons();
-    });
+  if (
+    searchedDeparture === "" ||
+    searchedArrival === "" ||
+    searchedDate === ""
+  ) {
+    console.log("Champs manquants"); /*
+    document.querySelector(
+      "#search-container"
+    ).innerHTML += `<h6>Merci de remplir tous les champs</h6>`;*/
+  } else {
+    document.querySelector("#results-container").innerHTML =
+      "<p>Loading...</p>";
+    fetch(
+      `http://localhost:3000/trips/${searchedDeparture}/${searchedArrival}/${searchedDate}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        populateTripsResults(data);
+        resfreshListenersBookButtons();
+      });
+  }
 });

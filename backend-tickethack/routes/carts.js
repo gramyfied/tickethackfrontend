@@ -72,7 +72,6 @@ let carts = [
 
 router.get("/", (req, res) => {
   Cart.find().then((carts) => {
-    console.log(carts);
     if (carts.length != 0) {
       res.json({ result: true, carts: carts });
     } else {
@@ -94,12 +93,12 @@ router.post("/", (req, res) => {
   });
 });
 
-router.delete("/:departure/:arrival/:date/:price", (req, res) => {
+router.delete("/", (req, res) => {
   Cart.deleteOne({
-    departure: req.params.departure,
-    arrival: req.params.departure,
-    date: new Date(req.params.date),
-    price: req.params.price,
+    departure: req.body.departure,
+    arrival: req.body.arrival,
+    date: new Date(req.body.date),
+    price: parseInt(req.body.price),
   }).then((data) => {
     if (data != []) {
       res.json({ result: true, removedCart: data });
